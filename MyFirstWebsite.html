@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Fun Facts</title>
+    <style>
+        :root {
+            color-scheme: light;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 100%);
+        }
+        .card {
+            max-width: 560px;
+            width: 100%;
+            padding: 2.5rem;
+            border-radius: 32px;
+            box-shadow: 0 28px 60px rgba(15, 23, 42, 0.12);
+            background: white;
+            text-align: center;
+        }
+        h1 {
+            margin: 0 0 1rem;
+            font-size: clamp(2rem, 3vw, 3rem);
+        }
+        p {
+            margin: 0 0 1.5rem;
+            line-height: 1.75;
+            color: #475569;
+        }
+        button {
+            cursor: pointer;
+            border: none;
+            border-radius: 999px;
+            padding: 1rem 1.8rem;
+            font-size: 1rem;
+            font-weight: 700;
+            background: #4338ca;
+            color: white;
+            transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 14px 32px rgba(67, 56, 202, 0.18);
+        }
+        button:hover,
+        button:focus-visible {
+            background: #3730a3;
+            transform: translateY(-2px);
+            outline: 2px solid transparent;
+            box-shadow: 0 18px 36px rgba(67, 56, 202, 0.22);
+        }
+        #message {
+            margin-top: 1.5rem;
+            padding: 1.5rem 1.5rem 1.25rem;
+            border-radius: 20px;
+            background: #f8fafc;
+            color: #0f172a;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            min-height: 4.5rem;
+        }
+        .note {
+            margin-top: 0.75rem;
+            font-size: 0.95rem;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <h1>Random Fun Facts</h1>
+        <p>Tap the button to reveal a new surprising fact. Each click shows a random item from a curated list of science, history, and nature trivia.</p>
+        <button id="actionButton" type="button" aria-live="polite">Show a Fun Fact</button>
+        <p id="message">Ready for a fun fact? Click the button above.</p>
+        <p class="note">Tip: Keep clicking for more random facts.</p>
+    </main>
+
+    <script>
+        const facts = [
+            'Honey never spoils. Archaeologists have eaten 3000-year-old honey found in ancient Egyptian tombs.',
+            'A single bolt of lightning contains enough energy to cook 100,000 slices of toast.',
+            'Octopuses have three hearts, blue blood, and the ability to taste with their arms.',
+            'Bananas are berries, but strawberries are not.',
+            'Venus rotates backward compared to most planets, so the sun rises in the west there.',
+            'Newborn koala babies are the size of a jellybean when they are born.',
+            'The Eiffel Tower can grow more than 6 inches in summer heat because iron expands.',
+            'Wombat poop is cube-shaped so it does not roll away from the burrow.',
+            'There are more stars in the universe than grains of sand on all the Earth’s beaches.',
+            'Sharks have been around longer than trees. Sharks date back over 400 million years.'
+        ];
+
+        const button = document.getElementById('actionButton');
+        const message = document.getElementById('message');
+
+        function showRandomFact() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            message.textContent = facts[randomIndex];
+        }
+
+        button.addEventListener('click', showRandomFact);
+    </script>
+</body>
+</html>
